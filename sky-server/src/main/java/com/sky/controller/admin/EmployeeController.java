@@ -91,4 +91,13 @@ public class EmployeeController {
         PageResult pageResult = employeeService.pageQuery(dto);
         return Result.success(pageResult);
     }
+
+    @ApiOperation("启用禁用员工账号")
+    @PostMapping("/status/{status}")
+    public Result<Object> enableOfDisableEmployeeAccount(@PathVariable Integer status, Long id){
+        employeeService.enableOfDisableEmployeeAccount(status, id);
+        return Result.success();
+    }
+
+
 }
