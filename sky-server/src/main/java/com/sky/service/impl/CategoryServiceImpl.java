@@ -3,6 +3,7 @@ package com.sky.service.impl;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.sky.context.BaseContext;
+import com.sky.dto.CategoryDTO;
 import com.sky.dto.CategoryPageQueryDTO;
 import com.sky.entity.Category;
 import com.sky.mapper.CategoryMapper;
@@ -36,6 +37,17 @@ public class CategoryServiceImpl implements CategoryService {
                 .status(status)
                 .updateTime(LocalDateTime.now())
                 .updateUser(BaseContext.getCurrentId())
+                .build();
+        categoryMapper.update(build);
+    }
+
+    @Override
+    public void updateCategory(CategoryDTO categoryDTO) {
+        Category build = Category.builder()
+                .id(categoryDTO.getId())
+                .type(categoryDTO.getType())
+                .name(categoryDTO.getName())
+                .sort(categoryDTO.getSort())
                 .build();
         categoryMapper.update(build);
     }

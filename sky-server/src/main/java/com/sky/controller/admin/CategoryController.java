@@ -1,5 +1,6 @@
 package com.sky.controller.admin;
 
+import com.sky.dto.CategoryDTO;
 import com.sky.dto.CategoryPageQueryDTO;
 import com.sky.result.PageResult;
 import com.sky.result.Result;
@@ -32,6 +33,13 @@ public class CategoryController {
     @ApiOperation("启动/禁用分类")
     public Result<Object> enableOrDisableCategory(@PathVariable Integer status, Long id) {
         categoryService.enableOrDisableCategory(status, id);
+        return Result.success();
+    }
+
+    @PutMapping
+    @ApiOperation("修改分类")
+    public Result<Object> updateCategory(@RequestBody CategoryDTO categoryDTO) {
+        categoryService.updateCategory(categoryDTO);
         return Result.success();
     }
 }
