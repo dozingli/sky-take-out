@@ -9,4 +9,6 @@ import org.apache.ibatis.annotations.Mapper;
 public interface CategoryMapper {
 
     Page<Category> pageSelect(CategoryPageQueryDTO categoryPageQueryDTO);
+
+    void update(Category build);
 }

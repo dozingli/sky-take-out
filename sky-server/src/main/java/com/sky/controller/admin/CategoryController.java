@@ -6,11 +6,10 @@ import com.sky.result.Result;
 import com.sky.service.CategoryService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.models.auth.In;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/admin/category")
@@ -27,5 +26,12 @@ public class CategoryController {
     public Result<PageResult> pageSelect(CategoryPageQueryDTO categoryPageQueryDTO) {
         PageResult pageResult = categoryService.pageSelect(categoryPageQueryDTO);
         return Result.success(pageResult);
+    }
+
+    @PostMapping("/status/{status}")
+    @ApiOperation("启动/禁用分类")
+    public Result<Object> enableOrDisableCategory(@PathVariable Integer status, Long id) {
+        categoryService.enableOrDisableCategory(status, id);
+        return Result.success();
     }
 }
