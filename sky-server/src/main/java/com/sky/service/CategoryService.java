@@ -10,4 +10,6 @@ public interface CategoryService {
     void enableOrDisableCategory(Integer status, Long id);
 
     void updateCategory(CategoryDTO categoryDTO);
+
+    void deleteCategory(Long id);
 }

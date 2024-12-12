@@ -51,4 +51,9 @@ public class CategoryServiceImpl implements CategoryService {
                 .build();
         categoryMapper.update(build);
     }
+
+    @Override
+    public void deleteCategory(Long id) {
+        categoryMapper.detele(id);
+    }
 }
