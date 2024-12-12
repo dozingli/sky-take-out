@@ -50,4 +50,10 @@ public class CategoryController {
         return Result.success();
     }
 
+    @PostMapping
+    @ApiOperation("新增分类")
+    public Result<Object> addCategory(@RequestBody CategoryDTO categoryDTO) {
+        categoryService.addCategory(categoryDTO);
+        return Result.success();
+    }
 }
